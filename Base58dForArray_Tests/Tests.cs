@@ -7,6 +7,9 @@ namespace Base58d.Tests
     [TestClass]
     public class ForArray
     {
+        /// <summary>
+        /// Uses confirmed results from Bitcoin code.
+        /// </summary>
         [TestMethod]
         public void Encode_array_hello_world()
         {
@@ -14,6 +17,9 @@ namespace Base58d.Tests
             Assert.AreEqual("2NEpo7TZRRrLZSi2U", Base58.EncodeArray(bytes));
         }
 
+        /// <summary>
+        /// Uses confirmed results from Bitcoin code.
+        /// </summary>
         [TestMethod]
         public void Encode_array_quick_brown_fox()
         {
@@ -29,12 +35,29 @@ namespace Base58d.Tests
         }
 
         [TestMethod]
-        [Ignore]
         public void Encode_decode_array_random_guid()
         {
-            var guid1 = Guid.NewGuid();
-            var guid2 = new Guid(Base58.DecodeArray(Base58.EncodeArray(guid1.ToByteArray())));
-            Assert.AreEqual(guid1, guid2);
+            var guid = Guid.NewGuid();
+            var guidReturned = new Guid(Base58.DecodeArray(Base58.EncodeArray(guid.ToByteArray())));
+            Assert.AreEqual(guid, guidReturned);
+        }
+
+        [TestMethod]
+        public void Encode_decode_array_known_guid()
+        {
+            var guid = Guid.Parse("bf75bdea-1fff-49ee-9122-c0c47da563e8");
+            var test = Base58.EncodeArray(guid.ToByteArray());
+            var guidReturned = new Guid(Base58.DecodeArray(Base58.EncodeArray(guid.ToByteArray())));
+            Assert.AreEqual(guid, guidReturned);
+        }
+
+        [TestMethod]
+        public void Encode_decode_array_lorem_ipsum_html()
+        {
+            const string text = " <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> ";
+            var bytes = Encoding.UTF8.GetBytes(text);
+            var textReturned = Encoding.UTF8.GetString(Base58.DecodeArray(Base58.EncodeArray(bytes)));
+            Assert.AreEqual(text, textReturned);
         }
     }
 }

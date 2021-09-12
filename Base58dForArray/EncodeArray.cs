@@ -39,7 +39,7 @@ namespace Base58d
         /// <returns>The string representation, in base 58, of the contents of input.</returns>
         /// <remarks>C# port of Bitcoin's EncodeBase58 function.</remarks>
         /// <seealso href="https://github.com/bitcoin/bitcoin/blob/master/src/base58.cpp"/>
-        public static string EncodeArray(byte[] input, IEnumerable<char> alphabet)
+        private static string EncodeArray(byte[] input, IEnumerable<char> alphabet)
         {
             // Skip & count leading zeroes.
             int zeroes = input.TakeWhile(x => x == 0).Count(); ;
