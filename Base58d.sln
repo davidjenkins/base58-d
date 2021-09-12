@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base58dForArray", "Base58dForArray\Base58dForArray.csproj", "{D8E2FF35-B888-4DFE-A478-F5DD104F9EF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base58d", "Base58d\Base58d.csproj", "{D8E2FF35-B888-4DFE-A478-F5DD104F9EF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Base58dForArray_Tests", "Base58dForArray_Tests\Base58dForArray_Tests.csproj", "{4E2CBCF7-4869-4A67-B646-1240D0A64656}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Base58d.Tests", "Base58d.Tests\Base58d.Tests.csproj", "{4E2CBCF7-4869-4A67-B646-1240D0A64656}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

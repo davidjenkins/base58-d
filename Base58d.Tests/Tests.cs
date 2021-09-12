@@ -2,16 +2,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Text;
 
-namespace Base58d.Tests
+namespace Base58d
 {
     [TestClass]
-    public class ForArray
+    public class Tests
     {
         /// <summary>
         /// Uses confirmed results from Bitcoin code.
         /// </summary>
         [TestMethod]
-        public void Encode_array_hello_world()
+        public void Encode_hello_world()
         {
             var bytes = Encoding.UTF8.GetBytes("Hello World!");
             Assert.AreEqual("2NEpo7TZRRrLZSi2U", Base58.EncodeArray(bytes));
@@ -21,21 +21,21 @@ namespace Base58d.Tests
         /// Uses confirmed results from Bitcoin code.
         /// </summary>
         [TestMethod]
-        public void Encode_array_quick_brown_fox()
+        public void Encode_quick_brown_fox()
         {
             var bytes = Encoding.UTF8.GetBytes("The quick brown fox jumps over the lazy dog.");
             Assert.AreEqual("USm3fpXnKG5EUBx2ndxBDMPVciP5hGey2Jh4NDv6gmeo1LkMeiKrLJUUBk6Z", Base58.EncodeArray(bytes));
         }
 
         [TestMethod]
-        public void Encode_array_zeroes()
+        public void Encode_zeroes()
         {
             var bytes = new byte[10];
             Assert.AreEqual("1111111111", Base58.EncodeArray(bytes));
         }
 
         [TestMethod]
-        public void Encode_decode_array_random_guid()
+        public void Encode_decode_random_guid()
         {
             var guid = Guid.NewGuid();
             var guidReturned = new Guid(Base58.DecodeArray(Base58.EncodeArray(guid.ToByteArray())));
@@ -43,7 +43,7 @@ namespace Base58d.Tests
         }
 
         [TestMethod]
-        public void Encode_decode_array_known_guid()
+        public void Encode_decode_known_guid()
         {
             var guid = Guid.Parse("bf75bdea-1fff-49ee-9122-c0c47da563e8");
             var test = Base58.EncodeArray(guid.ToByteArray());
@@ -52,7 +52,7 @@ namespace Base58d.Tests
         }
 
         [TestMethod]
-        public void Encode_decode_array_lorem_ipsum_html()
+        public void Encode_decode_lorem_ipsum_html()
         {
             const string text = " <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> ";
             var bytes = Encoding.UTF8.GetBytes(text);
